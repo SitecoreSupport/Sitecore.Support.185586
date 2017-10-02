@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\zzz\Sitecore.Support.185586.config" />
+    <Content Include="sitecore\login\default.aspx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
