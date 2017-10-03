@@ -55,14 +55,12 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomCheckClientUser.cs" />
     <Compile Include="CustomDefaultLogin.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\zzz\Sitecore.Support.185586.config" />
     <Content Include="sitecore\login\default.aspx" />
   </ItemGroup>
   <ItemGroup>
