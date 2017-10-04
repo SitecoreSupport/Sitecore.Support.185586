@@ -9,6 +9,7 @@ using Sitecore.Web.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
@@ -17,9 +18,6 @@ namespace Sitecore.Support.sitecore.login
 {
     public class Default : Sitecore.sitecore.login.Default
     {
-        private string fullUserName = string.Empty;
-        private string startUrl = string.Empty;
-
         protected System.Web.UI.WebControls.Literal ltrLogin;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,10 +26,10 @@ namespace Sitecore.Support.sitecore.login
 
         protected override bool Login()
         {
-            this.fullUserName = WebUtil.HandleFullUserName(this.UserName.Text);
-            this.startUrl = WebUtil.GetQueryString("returnUrl");
+            FieldInfo fullUserName = typeof(Sitecore.sitecore.login.Default).GetField("fullUserName", BindingFlags.NonPublic | BindingFlags.Instance);
+            string customFullUserName = fullUserName.GetValue(this).ToString();
 
-            if (AuthenticationManager.Login(this.fullUserName, this.Password.Text, this.ShouldPersist()))
+            if (AuthenticationManager.Login(customFullUserName, this.Password.Text, this.ShouldPersist()))
             {
                 return true;
             }
